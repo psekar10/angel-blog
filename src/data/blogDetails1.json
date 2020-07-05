@@ -1,0 +1,68 @@
+{
+    "post1" : {
+        "heading": "SERAPHIM",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry'sFusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum" ,
+        "img" : "/static/media/img1.bf571f27.jpg",
+        "linkto" : "/post/post1",
+        "author" : "Srilekha",
+        "readtime" : 5,
+        "createtime" : "Jan 1",
+        "recent" : ["post3", "post5", "post2"],
+        "filterOptions" : "angel"
+    },
+    "post2" : {
+        "heading": "CHERBHIM",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Fusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum",
+        "img" : "/static/media/img2.ac65e2a3.jpg",
+        "linkto" : "/post/post2",
+        "author" : "Parthipan",
+        "readtime" : 3,
+        "createtime" : "Jun 11",
+        "recent" : ["post1", "post4", "post6"],
+        "filterOptions" : "demon"
+    },
+    "post3" : {
+        "heading": "THRONES",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Fusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum",
+        "img" : "/static/media/img3.27b9af24.jpg",
+        "linkto" : "/post/post3",
+        "author" : "Prakash",
+        "readtime" : 6,
+        "createtime" : "Aug 21",
+        "recent" : ["post2", "post4", "post5"],
+        "filterOptions" : "angel"
+    },
+    "post4" : {
+        "heading": "DOMINIOS",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Fusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum",
+        "img" : "/static/media/img4.599cec48.jpg",
+        "linkto" : "/post/post4",
+        "author" : "Deepan",
+        "readtime" : 5,
+        "createtime" : "Jan 1",
+        "recent" : ["post1", "post3", "post6"],
+        "filterOptions" : "demon"
+    },
+    "post5" : {
+        "heading": "TROHOLDS",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Fusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum",
+        "img" : "/static/media/img5.5d3fcbd3.jpg",
+        "linkto" : "/post/post5",
+        "author" : "Sekar",
+        "readtime" : 5,
+        "createtime" : "Jan 1",
+        "recent" : ["post2", "post3", "post4"],
+        "filterOptions" : "angel"
+    },
+    "post6" : {
+        "heading": "ARCHANGEL",
+        "description" : "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's Fusce placerat tellus imperdiet justo blandit, eget feugiat erat hendrerit. Pellentesque imperdiet augue in enim blandit ultrices. Vestibulum ultricies mattis ex non venenatis. Cras sed condimentum ipsum",
+        "img" : "/static/media/img6.83ef4375.jpg",
+        "linkto" : "/post/post6",
+        "author" : "Madhu",
+        "readtime" : 5,
+        "createtime" : "Jan 1",
+        "recent" : ["post1", "post2", "post3"],
+        "filterOptions" : "demon"
+    }
+}
