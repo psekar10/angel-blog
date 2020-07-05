@@ -127,7 +127,7 @@ const Header = () => {
 			)}
 			<HeaderContainer>
 				<LogoLink key="1" to="/blog">
-					<TitleLogoHeading>The Angel</TitleLogoHeading>
+					<TitleLogoHeading>The Angels</TitleLogoHeading>
 				</LogoLink>
 				<HamBurgerButton onClick={handleClick}>
 					{smallHeader ? !isModalOpen ? <HamburgerImage src={Hamburger} /> : <CloseImage src={Close} /> : null}
