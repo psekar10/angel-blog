@@ -18,7 +18,7 @@ import Blog1 from './pages/blogsSection/blog1';
 import BlogPosts from './pages/blogsSection/blogPosts';
 
 const MainContainer = styled.div`
-	margin: 35px 200px 60px;
+	margin: 35px 250px 60px;
 	@media (max-width: 1100px) {
 		margin: 35px 100px 50px;
 	}
