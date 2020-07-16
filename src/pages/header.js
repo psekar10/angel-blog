@@ -26,7 +26,6 @@ const HeaderContainer1 = styled.nav`
 `;
 const ListUL = styled.ul`
 	display: flex;
-	justify-content: flex-end;
 	list-style: none;
 `;
 const ListLI = styled.li`

@@ -92,6 +92,24 @@ export const CustomButton = styled.button`
 		box-shadow: 1px 4px 7px grey;
 	}
 `;
+export const DynamicButton = styled.button`
+	padding: 15px;
+	background: transparent;
+	border-color: rgb(209, 37, 0);
+	color: #D12500;
+	font-size: 1em;
+	border-radius: 20px;
+	&:hover,
+	&:active {
+		cursor: pointer;
+		background: #D12500;
+		color: white;
+		box-shadow: 1px 4px 7px grey;
+	}
+	@media (max-width: 720px) {
+		width: 100%
+	}
+`;
 export const ShareButton = styled.button`
 	background-color:transparent;
 	border-style: initial;

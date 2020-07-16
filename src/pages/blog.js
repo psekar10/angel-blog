@@ -1,7 +1,7 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 
-import { Heading1 } from '../utils/styles';
+import { Heading1, DynamicButton } from '../utils/styles';
 import BlogPostLayout from './layout/blogPostLayout';
 import BlogDetails from '../data/blogDetails1.json';
 
@@ -21,6 +21,12 @@ const BlogsWrapper = styled.div`
 	@media (max-width: 720px) {
 		grid-template-columns: repeat(1, minmax(250px, 1fr));
 	}
+`;
+const LoadMoreButtonContainer = styled.div`
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	margin: 20px 0 0;s
 `;
 const HeadingContainer = styled.div`
 	display: flex;
@@ -58,53 +64,86 @@ const ListLI = styled.li`
 
 const FilterSection = ({onhandclick}) => (
 	<FilterContainer>
-			<ListUL onClick={onhandclick}>
-					<ListLI name="">ALL</ListLI>
-					<ListLI name="angel">ANGEL</ListLI>
-					<ListLI name="demon">DEMON</ListLI>
-			</ListUL>
+		<ListUL onClick={onhandclick}>
+			<ListLI name="">ALL</ListLI>
+			<ListLI name="angel">ANGEL</ListLI>
+			<ListLI name="demon">DEMON</ListLI>
+		</ListUL>
 	</FilterContainer>
 );
 
 const Blog = () => {
-	const [blogPosts, setBlog ] = useState(BlogDetails)
+	const [mainBlogPosts, setmainBlogPosts ] = useState({});
+	const [refBlogPosts, setrefBlogPosts ] = useState({});
+	const [start, setStart] = useState(0);
+	const isLoadMoreNeeded = (start + 4 < Object.keys(BlogDetails).length);
+
+	const slicedBlogPosts = () => {
+		let slicedFourBlogs = Object.keys(BlogDetails).slice(start, start + 4).reduce((result, key) => {
+			result[key] = BlogDetails[key];
+			return result;
+		}, {});
+
+		return slicedFourBlogs;
+	};
 	const filterObject = (obj, filter, filterValue) => 
-	Object.keys(obj).reduce((acc, val) => 
+		Object.keys(obj).reduce((acc, val) => 
 		(obj[val][filter] !== filterValue ? acc : {
 			...acc,
 			[val]: obj[val]
 		}                                        
-	), {});
-	const handleClick = (e) => {
-		const filteredBlogPost = filterObject(BlogDetails, "filterOptions", e.target.getAttribute('name'));
-		(Object.keys(filteredBlogPost).length === 0) ? setBlog(BlogDetails) : setBlog(filteredBlogPost);
+		),
+	{});
+
+	const handleFilter = e => {
+		const filteredBlogPost = filterObject(refBlogPosts, "filterOptions", e.target.getAttribute('name'));
+		(Object.keys(filteredBlogPost).length === 0) ? setmainBlogPosts(refBlogPosts) : setmainBlogPosts(filteredBlogPost);
 	}
+	const handleLoadMore = () => {
+		setStart(start+4)
+	}
+
+	useEffect(() => {
+		let slicedPosts = slicedBlogPosts();
+		let finalCombinedBlogPosts = {...refBlogPosts, ...slicedPosts};
+		setmainBlogPosts(finalCombinedBlogPosts);
+		setrefBlogPosts(finalCombinedBlogPosts);
+	}, [start]);
 
 	return (
 		<>
-			<FilterSection onhandclick={handleClick} />
-			<FirstBlogWrapper>
-				<BlogPostLayout 
-					attributes={blogPosts[Object.keys(blogPosts)[0]]} 
-					linkto={blogPosts[Object.keys(blogPosts)[0]].linkto} 
-					layout="SideBySide" 
-				/>
-			</FirstBlogWrapper>
-			<HeadingContainer>
-				<Heading1>Blog Posts</Heading1>
-			</HeadingContainer>
-			<BlogsWrapper>
-				{
-					Object.entries(blogPosts).map(([, values]) => (
+			{Object.keys(mainBlogPosts).length !== 0 && (
+				<>
+					<FilterSection onhandclick={handleFilter} />
+					<FirstBlogWrapper>
 						<BlogPostLayout 
-							key={values.linkto} 
-							attributes={values} 
-							linkto={values.linkto} 
-							layout="WrappedAround" 
+							attributes={mainBlogPosts[Object.keys(mainBlogPosts)[0]]} 
+							linkto={mainBlogPosts[Object.keys(mainBlogPosts)[0]].linkto} 
+							layout="SideBySide" 
 						/>
-					))
-				}
-			</BlogsWrapper>
+					</FirstBlogWrapper>
+					<HeadingContainer>
+						<Heading1>Blog Posts</Heading1>
+					</HeadingContainer>
+					<BlogsWrapper>
+						{
+							Object.entries(mainBlogPosts).map(([, values]) => (
+								<BlogPostLayout 
+									key={values.linkto} 
+									attributes={values} 
+									linkto={values.linkto} 
+									layout="WrappedAround" 
+								/>
+							))
+						}
+					</BlogsWrapper>
+					{isLoadMoreNeeded && (
+						<LoadMoreButtonContainer>
+							<DynamicButton onClick={handleLoadMore}>LOAD MORE</DynamicButton>
+						</LoadMoreButtonContainer>
+					)}
+				</>
+			)}
 		</>
 	);
 }

@@ -10,6 +10,7 @@ import HackerNews from './pages/hackerNews';
 import HamburgerPage from './pages/hamburgerSlidePage';
 import Header from './pages/header';
 import Blog from './pages/blog';
+import Contact from './pages/contact';
 import Footer from './pages/footer';
 import NoMatchPage from './pages/noMatch';
 import Pokemon from './pages/pokemon';
@@ -36,7 +37,8 @@ const App = () => {
         <MainContainer>
           <Switch>
             <Route exact path="/" component={Blog}/>
-            <Route exact path="/hacker-news" component={HackerNews}/>
+            <Route path="/hacker-news" component={HackerNews}/>
+            <Route path="/contact" component={Contact}/>
             <Route path="/pokemon/:slug" component={Pokemon}/>
             <Route path="/about" component={About}/>
             <Route exact path="/blog" component={Blog}/>
