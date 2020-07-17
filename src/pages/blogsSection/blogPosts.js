@@ -18,6 +18,9 @@ const MainContainer = styled.div`
 `;
 const BlogContainer = styled.div`
 	margin: 20px 70px 50px;
+	@media (max-width: 1100px) {
+		margin: 20px 30px 50px;
+	}
 	@media (max-width: 630px) {
 		margin: 0px;
 	}
@@ -26,6 +29,9 @@ const BackButtonContainer = styled.div`
 	display: flex;
 	flex-direction: row-reverse;
 	margin: -15px 70px 10px;
+	@media (max-width: 1100px) {
+		margin: -15px 30px 0px;
+	}
 	@media (max-width: 630px) {
 		flex-direction: row;
 		margin: -10px 0px -10px;

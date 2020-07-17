@@ -12,6 +12,7 @@ const FirstBlogWrapper = styled.div`
 	gap: 20px;
 	@media (max-width: 720px) {
 		grid-template-columns: repeat(1, minmax(250px, 1fr));
+		grid-template-rows: 300px;
 	}
 `;
 const BlogsWrapper = styled.div`
@@ -76,7 +77,9 @@ const Blog = () => {
 	const [mainBlogPosts, setmainBlogPosts ] = useState({});
 	const [refBlogPosts, setrefBlogPosts ] = useState({});
 	const [start, setStart] = useState(0);
-	const isLoadMoreNeeded = (start + 4 < Object.keys(BlogDetails).length);
+	const currentListedBlogs = Object.keys(mainBlogPosts).length;
+	const totalListedBlogs = Object.keys(BlogDetails).length;
+	const isLoadMoreNeeded = (start + 4 < totalListedBlogs);
 
 	const slicedBlogPosts = () => {
 		let slicedFourBlogs = Object.keys(BlogDetails).slice(start, start + 4).reduce((result, key) => {
@@ -112,7 +115,7 @@ const Blog = () => {
 
 	return (
 		<>
-			{Object.keys(mainBlogPosts).length !== 0 && (
+			{currentListedBlogs !== 0 && (
 				<>
 					<FilterSection onhandclick={handleFilter} />
 					<FirstBlogWrapper>
@@ -137,6 +140,7 @@ const Blog = () => {
 							))
 						}
 					</BlogsWrapper>
+					<p><i>Showing {currentListedBlogs} of {totalListedBlogs}</i></p>
 					{isLoadMoreNeeded && (
 						<LoadMoreButtonContainer>
 							<DynamicButton onClick={handleLoadMore}>LOAD MORE</DynamicButton>

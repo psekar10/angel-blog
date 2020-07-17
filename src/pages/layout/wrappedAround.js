@@ -14,7 +14,7 @@ import {
 
 const WrappedAround = ({attributes, linkto, recentPost=false}) => {
 	const ColumnBoxWrapper = recentPost ?  RecentColBox : Col1Box;
-	const { description, heading, img} = attributes;
+	const { author, createtime, description, heading, img} = attributes;
 	const url = new URL(attributes.linkto, window.location.origin);
 
 	return (
@@ -29,6 +29,8 @@ const WrappedAround = ({attributes, linkto, recentPost=false}) => {
 					</CustomLink>
 					<SocialMediaShare url={url} />
 				</BodyFirstRowWrapper>
+				<p style={{margin: 2, padding: 0, color: "#D12500"}}>{author}</p>
+				<p style={{margin: 2, padding: 0, fontSize: "0.9rem"}}>{createtime}</p>
 				<CustomLink key={url} to={linkto}>
 					<BlogParagraph>{description}</BlogParagraph>
 				</CustomLink>

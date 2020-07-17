@@ -21,10 +21,10 @@ import BlogPosts from './pages/blogsSection/blogPosts';
 const MainContainer = styled.div`
 	margin: 35px 250px 60px;
 	@media (max-width: 1100px) {
-		margin: 35px 100px 50px;
+		margin: 35px 60px 50px;
 	}
 	@media (max-width: 630px) {
-		margin: 20px 25px 30px;
+		margin: 20px 16px 30px;
 	}
 `;
 const App = () => {

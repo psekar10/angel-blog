@@ -42,6 +42,7 @@ export const BlogParagraph = styled.p`
 export const BodyFirstRowWrapper = styled.div`
 	display:flex;
 	justify-content: space-between;
+	margin: 0 0 -10px;
 `;
 export const HeadAndBodyConatainer = styled.div`
 	margin:15px;
@@ -55,6 +56,9 @@ export const Col1Box = styled.div`
 	grid-template-rows: 370px;
 	border: solid black thin;
 	border-radius: 20px;
+	@media (max-width: 630px) {
+		grid-template-rows: 300px;
+	}
 `;
 export const RecentColBox = styled.div`
 	display: grid;
