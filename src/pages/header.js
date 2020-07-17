@@ -14,7 +14,7 @@ const HeaderContainer = styled.nav`
 	justify-content: center;
 	background-color: #D12500;
 	padding: 20px;
-	@media (max-width: 570px) {
+	@media (max-width: 570px), (max-height: 500px) {
 		justify-content: space-between;
 	}
 `;

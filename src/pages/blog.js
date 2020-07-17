@@ -73,10 +73,7 @@ const FilterSection = ({onhandclick}) => (
 );
 
 const Blog = () => {
-	const smallScreen = window.matchMedia("(max-width: 600px)").matches;
-	const smallScreen1 = window.matchMedia("(max-height: 500px)").matches;
-	console.log('smallScreen',smallScreen)
-	console.log('smallScreen1',smallScreen1)
+	const smallScreen = window.matchMedia("(max-width: 600px), (max-height: 500px)").matches;
 	const [mainBlogPosts, setmainBlogPosts ] = useState({});
 	const [refBlogPosts, setrefBlogPosts ] = useState({});
 	const [start, setStart] = useState(0);
