@@ -9,7 +9,6 @@ const FirstBlogWrapper = styled.div`
 	display: grid;
 	grid-template-columns: repeat(2, minmax(250px, 1fr));
 	grid-template-rows: 370px;
-	gap: 20px;
 	@media (max-width: 720px) {
 		grid-template-columns: repeat(1, minmax(250px, 1fr));
 		grid-template-rows: 300px;
