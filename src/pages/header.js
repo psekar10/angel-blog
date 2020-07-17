@@ -79,7 +79,7 @@ const TitleLogoHeading = styled.h2`
 `;
 
 const Header = () => {
-	const smallScreen = window.matchMedia("(max-width: 570px)").matches;
+	const smallScreen = window.matchMedia("(max-width: 600px), (max-height: 500px)").matches;
 	const [smallHeader, setSmallHeader] = useState(smallScreen);
 	const [isModalOpen, setModalOpen] = useState(false);
 	const dispatch = useDispatch();
