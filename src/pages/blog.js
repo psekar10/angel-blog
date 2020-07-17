@@ -73,6 +73,7 @@ const FilterSection = ({onhandclick}) => (
 );
 
 const Blog = () => {
+	const smallScreen = window.matchMedia("(max-width: 600px)").matches;
 	const [mainBlogPosts, setmainBlogPosts ] = useState({});
 	const [refBlogPosts, setrefBlogPosts ] = useState({});
 	const [start, setStart] = useState(0);
@@ -117,16 +118,20 @@ const Blog = () => {
 			{currentListedBlogs !== 0 && (
 				<>
 					<FilterSection onhandclick={handleFilter} />
-					<FirstBlogWrapper>
-						<BlogPostLayout 
-							attributes={mainBlogPosts[Object.keys(mainBlogPosts)[0]]} 
-							linkto={mainBlogPosts[Object.keys(mainBlogPosts)[0]].linkto} 
-							layout="SideBySide" 
-						/>
-					</FirstBlogWrapper>
-					<HeadingContainer>
-						<Heading1>Blog Posts</Heading1>
-					</HeadingContainer>
+					{!smallScreen && (
+						<>
+							<FirstBlogWrapper>
+								<BlogPostLayout 
+									attributes={mainBlogPosts[Object.keys(mainBlogPosts)[0]]} 
+									linkto={mainBlogPosts[Object.keys(mainBlogPosts)[0]].linkto} 
+									layout="SideBySide" 
+								/>
+							</FirstBlogWrapper>
+							<HeadingContainer>
+								<Heading1>Blog Posts</Heading1>
+							</HeadingContainer>
+						</>
+					)}
 					<BlogsWrapper>
 						{
 							Object.entries(mainBlogPosts).map(([, values]) => (
