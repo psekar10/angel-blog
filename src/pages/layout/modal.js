@@ -2,7 +2,7 @@ import React from 'react';
 import styled from 'styled-components';
 
 import SocialMediaStrip from '../blogsSection/components/socialMediaStrip';
-import { ParaCenter } from '../../utils/styles';
+import { Heading2 } from '../../utils/styles';
 import Close from '../../svg/close-icon.svg';
 
 const ModalMain = styled.section`
@@ -53,7 +53,7 @@ const Modal = ({show, handleClose, url}) => {
 		<ModalContainer>
 			<ModalMain>
 				<ShareTopTierContainer>
-					<ParaCenter>Share the Post:</ParaCenter>
+					<h3>Share the Post:</h3>
 					<Button onClick={handleClose}><CloseImage src={Close} /></Button>
 				</ShareTopTierContainer>
 				<SocialButtonContainer>

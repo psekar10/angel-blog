@@ -22,8 +22,17 @@ const Image = styled.img`
 	max-width: 100%;
 `;
 const About = () => {
+	const handleClick = () => {
+    const dummy = document.createElement("textarea");
+    document.body.appendChild(dummy);
+    dummy.value = "this worked and is awesome";
+    dummy.select();
+    document.execCommand("copy");
+    document.body.removeChild(dummy);
+	}
 	return (
 		<Container>
+			<button onClick={handleClick}>CLICK ME</button>
 			<Image src={img1} />
 			<div>
 			<h2>ABOUT ME </h2>
