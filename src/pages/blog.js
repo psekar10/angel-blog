@@ -113,6 +113,8 @@ const Blog = () => {
 		setrefBlogPosts(finalCombinedBlogPosts);
 	}, [start]);
 
+	console.log('mainBlogPosts', mainBlogPosts);
+
 	return (
 		<>
 			{currentListedBlogs !== 0 && (

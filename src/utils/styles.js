@@ -102,6 +102,7 @@ export const DynamicButton = styled.button`
 	border-color: rgb(209, 37, 0);
 	color: #D12500;
 	font-size: 1em;
+	font-weight: 600;
 	border-radius: 20px;
 	&:hover,
 	&:active {

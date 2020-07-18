@@ -9,7 +9,7 @@ import Close from '../svg/close-icon.svg';
 import { getCommonStates } from '../actions/getpokemon';
 import NavMenuLinks from '../data/navMenuLinks.json';
 
-const HeaderContainer = styled.nav`
+const MobileHeaderContainer = styled.nav`
 	display: flex;
 	justify-content: center;
 	background-color: #D12500;
@@ -18,7 +18,7 @@ const HeaderContainer = styled.nav`
 		justify-content: space-between;
 	}
 `;
-const HeaderContainer1 = styled.nav`
+const HeaderContainer = styled.nav`
 	display: flex;
 	justify-content: center;
 	background-color: white;
@@ -118,20 +118,20 @@ const Header = () => {
 	return (
 		<>
 			{!smallHeader && (
-				<HeaderContainer1>
+				<HeaderContainer>
 					<ListUL>
 						{Lists}
 					</ListUL>
-				</HeaderContainer1>
+				</HeaderContainer>
 			)}
-			<HeaderContainer>
+			<MobileHeaderContainer>
 				<LogoLink key="1" to="/blog">
 					<TitleLogoHeading>The Angels</TitleLogoHeading>
 				</LogoLink>
 				<HamBurgerButton onClick={handleClick}>
 					{smallHeader ? !isModalOpen ? <HamburgerImage src={Hamburger} /> : <CloseImage src={Close} /> : null}
 				</HamBurgerButton>
-			</HeaderContainer>
+			</MobileHeaderContainer>
 		</>
 	)
 };
