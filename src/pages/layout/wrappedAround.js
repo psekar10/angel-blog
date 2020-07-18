@@ -22,7 +22,7 @@ const WrappedAround = ({attributes, linkto, recentPost=false}) => {
 			<CustomLink key={url} to={linkto}>
 				<Image src={img} />
 			</CustomLink>
-			<HeadAndBodyConatainer>
+			<div style={{margin:"15px"}}>
 				<BodyFirstRowWrapper>
 					<CustomLink key={url} to={linkto}>
 						<Heading2>{heading}</Heading2>	
@@ -34,7 +34,7 @@ const WrappedAround = ({attributes, linkto, recentPost=false}) => {
 				<CustomLink key={url} to={linkto}>
 					<BlogParagraph>{description}</BlogParagraph>
 				</CustomLink>
-			</HeadAndBodyConatainer>
+			</div>
 		</ColumnBoxWrapper>
 	);	
 }

@@ -22,10 +22,10 @@ const CloseImage = styled.img`
 `;
 const Button = styled.button`
 	position: absolute;
-	right: -14px;
-	top: -7px;
+	right: 9px;
+	top: 6px;
 	background-color: white;
-	border-color: red;
+	border-color: grey;
 	border-radius: 15px;
 `;
 const ShareTopTierContainer = styled.div`

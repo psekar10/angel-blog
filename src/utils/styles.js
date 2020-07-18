@@ -44,9 +44,6 @@ export const BodyFirstRowWrapper = styled.div`
 	justify-content: space-between;
 	margin: 0 0 -10px;
 `;
-export const HeadAndBodyConatainer = styled.div`
-	margin:15px;
-`;
 export const CustomLink = styled(Link)`
 	text-decoration:none;
 	color: black;
