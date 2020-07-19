@@ -4,12 +4,12 @@ import styled from 'styled-components';
 import img1 from "../img/img1.jpg";
 
 const Container = styled.div`
-	display: grid;
-	grid-template-columns: repeat(2, minmax(250px, 1fr));
-	gap: 20px;
-	@media (max-width: 720px) {
-		grid-template-columns: repeat(1, minmax(250px, 1fr));
-	}
+	// display: grid;
+	// grid-template-columns: repeat(2, minmax(250px, 1fr));
+	// gap: 20px;
+	// @media (max-width: 720px) {
+	// 	grid-template-columns: repeat(1, minmax(250px, 1fr));
+	// }
 `;
 const Para = styled.p`
 clear:both;
@@ -18,8 +18,7 @@ clear:both;
 const Image = styled.img`
 	object-fit: cover;
 	width: 100%;
-	max-height: 100%;
-	max-width: 100%;
+	height: 400px;
 `;
 const About = () => {
 	const handleClick = () => {
@@ -32,9 +31,7 @@ const About = () => {
 	}
 	return (
 		<Container>
-			<button onClick={handleClick}>CLICK ME</button>
 			<Image src={img1} />
-			<div>
 			<h2>ABOUT ME </h2>
 			<Para>
 				Contrary to popular belief, Lorem Ipsum is not simply random text. 
@@ -55,7 +52,6 @@ const About = () => {
 				discovered the undoubtable source. Lorem Ipsum comes from sections 1.10.32 and 1.10.33 of 
 
 			</Para>
-			</div>
 		</Container>
 	);
 }

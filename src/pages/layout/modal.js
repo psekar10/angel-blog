@@ -37,7 +37,7 @@ const SocialButtonContainer = styled.div`
 	align-items: center;
 `;
 
-const Modal = ({show, handleClose, url}) => {
+const Modal = ({show, handleClose, url, title}) => {
 	const modalDisplay = show ? "block" : "none";
 	const ModalContainer = styled.div`
 		position: fixed;
@@ -57,7 +57,7 @@ const Modal = ({show, handleClose, url}) => {
 					<Button onClick={handleClose}><CloseImage src={Close} /></Button>
 				</ShareTopTierContainer>
 				<SocialButtonContainer>
-					<SocialMediaStrip url={url}/>
+					<SocialMediaStrip url={url} title={title}/>
 				</SocialButtonContainer>
 				</ModalMain>
 		</ModalContainer>

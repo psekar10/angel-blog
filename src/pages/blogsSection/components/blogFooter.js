@@ -12,11 +12,11 @@ const SocialButtonContainer = styled.div`
 	display:flex;
 `;
 
-const BlogFooter = ({url}) => {
+const BlogFooter = ({url, title}) => {
 	return (
 		<BlogFooterContainer>
 			<SocialButtonContainer>
-				<SocialMediaStrip url={url} />
+				<SocialMediaStrip url={url} title={title} />
 			</SocialButtonContainer>
 			<TopButton />
 		</BlogFooterContainer>

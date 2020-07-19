@@ -54,7 +54,7 @@ const BlogPosts = ({location:{state}}) => {
 					<BlogContainer>
 						<BlogHeader post={post} />
 						<BodyComponent slug={slug} />
-						<BlogFooter url={new URL(post.linkto, window.location.origin)} />
+						<BlogFooter url={new URL(post.linkto, window.location.origin)} title={post.heading} />
 					</BlogContainer>
 				</MainContainer>
 				<RecentPosts recent={post.recent} />

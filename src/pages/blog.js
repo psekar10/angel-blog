@@ -4,6 +4,7 @@ import styled from 'styled-components';
 import { Heading1, DynamicButton } from '../utils/styles';
 import BlogPostLayout from './layout/blogPostLayout';
 import BlogDetails from '../data/blogDetails1.json';
+import BlogDetails1 from '../data/blogDetails.json';
 
 const FirstBlogWrapper = styled.div`
 	display: grid;
@@ -113,7 +114,7 @@ const Blog = () => {
 		setrefBlogPosts(finalCombinedBlogPosts);
 	}, [start]);
 
-	console.log('mainBlogPosts', mainBlogPosts);
+	console.log('BlogDetails1', BlogDetails1);
 
 	return (
 		<>

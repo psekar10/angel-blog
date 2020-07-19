@@ -26,7 +26,7 @@ const WhatsappButton = styled(WhatsappShareButton)`
 	margin: 5px;
 `;
 
-const SocialMediaStrip = ({url}) => {
+const SocialMediaStrip = ({url, title}) => {
 	const handleClick = (url) => {
     const dummy = document.createElement("textarea");
     document.body.appendChild(dummy);
@@ -39,17 +39,17 @@ const SocialMediaStrip = ({url}) => {
 		<>
 			<FacebookButton
 				url={url}
-				quote="FB link">
+				quote={title}>
 				<FacebookIcon size={36} round={true} />
 			</FacebookButton>
 			<TwitterButton
 				url={url}
-				title="Twitter Link">
+				title={title}>
 				<TwitterIcon size={36} round={true} />
 			</TwitterButton>
 			<WhatsappButton
 				url={url}
-				title="Whatsapp Link">
+				title={title}>
 				<WhatsappIcon size={36} round={true} />
 			</WhatsappButton>
 			<Image onClick={() => handleClick(url)} src={CopyToClipboard} />

@@ -4,7 +4,7 @@ import Modal from './modal';
 import ShareIcon from '../../svg/share-icon.svg';
 import { ShareButton } from '../../utils/styles';
 
-const SocialMediaShare = ({url}) => {
+const SocialMediaShare = ({url, title}) => {
 	const [modalState, setModalState] = useState(false);
 	const [socialMediaUrl, setsocialMediaUrl] = useState('');
 	const showModal = (url) => {
@@ -16,7 +16,7 @@ const SocialMediaShare = ({url}) => {
 	}
 	return (
 		<>
-			<Modal show={modalState} handleClose={hideModal} url={socialMediaUrl} />
+			<Modal show={modalState} handleClose={hideModal} url={socialMediaUrl} title={title} />
 			<ShareButton onClick={() => showModal(url)}>
 				<img src={ShareIcon} />
 			</ShareButton>

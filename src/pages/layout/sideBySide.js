@@ -28,7 +28,7 @@ const SideBySide = ({attributes, linkto}) => {
 						<CustomLink key={linkto} to={linkto}>
 							<Heading2>{heading}</Heading2>	
 						</CustomLink>
-						<SocialMediaShare url={url} />
+						<SocialMediaShare url={url} title={heading} />
 					</BodyFirstRowWrapper>
 					<p style={{margin: 2, padding: 0, color: "#D12500"}}>{author}</p>
 					<p style={{margin: 2, padding: 0, fontSize: "0.9rem"}}>{createtime}</p>

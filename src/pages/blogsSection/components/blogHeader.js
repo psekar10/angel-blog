@@ -22,7 +22,7 @@ const BlogHeader = ({post}) => {
 		<>
 			<FirstRowWrapper>
 				<Heading4>{author} | {createtime} | {readtime} min read</Heading4>
-				<SocialMediaShare url={url} />
+				<SocialMediaShare url={url} title={heading}/>
 			</FirstRowWrapper>
 			<Heading2>{heading}</Heading2>
 		</>
