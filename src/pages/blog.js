@@ -134,7 +134,7 @@ const FilterContainer = styled.div`
 `;
 const FilterLink = styled(Link)`
 	color: #D12500;
-	padding-right: 30px;
+	margin: 5px 10px;
 	font-family: Georgia, serif;
 	text-decoration:none;
 	&:hover,
