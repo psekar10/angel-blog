@@ -2,7 +2,7 @@ import React from 'react';
 import { useParams } from "react-router-dom";
 import styled from 'styled-components';
 
-import BlogDetails from '../../data/blogDetails1.json';
+import BlogDetails1 from '../../data/blogDetails.json';
 import BlogHeader from './components/blogHeader';
 import BodyComponent from './components/blogBody';
 import BlogFooter from './components/blogFooter';
@@ -41,7 +41,7 @@ const BackButtonContainer = styled.div`
 const BlogPosts = ({location:{state}}) => {
 	const previousPath =  (state?.prevPath) ? true : false;
 	const { slug } = useParams();
-	const post = BlogDetails[slug];
+	const post = BlogDetails1.filter(blogs => blogs.name === slug)[0];
 	
 	return (
 		<>

@@ -1,10 +1,11 @@
-import React, {useState, useEffect} from 'react';
+import React, {useState, useEffect, useCallback} from 'react';
 import styled from 'styled-components';
 
 import { Heading1, DynamicButton } from '../utils/styles';
 import BlogPostLayout from './layout/blogPostLayout';
 import BlogDetails from '../data/blogDetails1.json';
 import BlogDetails1 from '../data/blogDetails.json';
+import { compose } from 'redux';
 
 const FirstBlogWrapper = styled.div`
 	display: grid;
@@ -77,45 +78,58 @@ const Blog = () => {
 	const smallScreen = window.matchMedia("(max-width: 600px), (max-height: 500px)").matches;
 	const [mainBlogPosts, setmainBlogPosts ] = useState({});
 	const [refBlogPosts, setrefBlogPosts ] = useState({});
+	const [testBlogsPost, setTestBlogsPost ] = useState([]);
 	const [start, setStart] = useState(0);
-	const currentListedBlogs = Object.keys(mainBlogPosts).length;
+	//const currentListedBlogs = Object.keys(mainBlogPosts).length;
+	const currentListedBlogs = testBlogsPost.length;
 	const totalListedBlogs = Object.keys(BlogDetails).length;
-	const isLoadMoreNeeded = (start + 4 < totalListedBlogs);
+	const isLoadMoreNeeded = testBlogsPost.length < BlogDetails1.length;
 
-	const slicedBlogPosts = () => {
-		let slicedFourBlogs = Object.keys(BlogDetails).slice(start, start + 4).reduce((result, key) => {
-			result[key] = BlogDetails[key];
-			return result;
-		}, {});
+	// const slicedBlogPosts = () => {
+	// 	let slicedFourBlogs = Object.keys(BlogDetails).slice(start, start + 4).reduce((result, key) => {
+	// 		result[key] = BlogDetails[key];
+	// 		return result;
+	// 	}, {});
 
-		return slicedFourBlogs;
-	};
-	const filterObject = (obj, filter, filterValue) => 
-		Object.keys(obj).reduce((acc, val) => 
-		(obj[val][filter] !== filterValue ? acc : {
-			...acc,
-			[val]: obj[val]
-		}                                        
-		),
-	{});
+	// 	return slicedFourBlogs;
+	// };
+	// const filterObject = (obj, filter, filterValue) => 
+	// 	Object.keys(obj).reduce((acc, val) => 
+	// 	(obj[val][filter] !== filterValue ? acc : {
+	// 		...acc,
+	// 		[val]: obj[val]
+	// 	}                                        
+	// 	),
+	// {});
 
 	const handleFilter = e => {
-		const filteredBlogPost = filterObject(refBlogPosts, "filterOptions", e.target.getAttribute('name'));
-		(Object.keys(filteredBlogPost).length === 0) ? setmainBlogPosts(refBlogPosts) : setmainBlogPosts(filteredBlogPost);
+	//	const filteredBlogPost = filterObject(refBlogPosts, "filterOptions", e.target.getAttribute('name'));
+//		(Object.keys(filteredBlogPost).length === 0) ? setmainBlogPosts(refBlogPosts) : setmainBlogPosts(filteredBlogPost);
 	}
-	const handleLoadMore = () => {
-		setStart(start+4)
-	}
+	// const handleLoadMore = () => {
+	// 	setStart(start+4)
+	// }
 
+	// useEffect(() => {
+	// 	let slicedPosts = slicedBlogPosts();
+	// 	let finalCombinedBlogPosts = {...refBlogPosts, ...slicedPosts};
+	// 	setmainBlogPosts(finalCombinedBlogPosts);
+	// 	setrefBlogPosts(finalCombinedBlogPosts);
+	// }, [start]);
+
+	// //console.log('BlogDetails1',BlogDetails1)
+	const loadBlogs = useCallback(({start}) => {
+		let blogAllowedItems = 4;
+		const slicedBlogs = BlogDetails1.slice(start, start + blogAllowedItems)
+		setTestBlogsPost(testBlogsPost => testBlogsPost.concat(slicedBlogs));
+	},[]);
 	useEffect(() => {
-		let slicedPosts = slicedBlogPosts();
-		let finalCombinedBlogPosts = {...refBlogPosts, ...slicedPosts};
-		setmainBlogPosts(finalCombinedBlogPosts);
-		setrefBlogPosts(finalCombinedBlogPosts);
-	}, [start]);
-
-	console.log('BlogDetails1', BlogDetails1);
-
+		loadBlogs({start : 0});
+		return () => {
+			setTestBlogsPost([]);
+		}
+	}, [loadBlogs]);
+	console.log('testBlogsPost', testBlogsPost);
 	return (
 		<>
 			{currentListedBlogs !== 0 && (
@@ -125,8 +139,8 @@ const Blog = () => {
 						<>
 							<FirstBlogWrapper>
 								<BlogPostLayout 
-									attributes={mainBlogPosts[Object.keys(mainBlogPosts)[0]]} 
-									linkto={mainBlogPosts[Object.keys(mainBlogPosts)[0]].linkto} 
+									attributes={testBlogsPost[0]} 
+									linkto={testBlogsPost[0].linkto} 
 									layout="SideBySide" 
 								/>
 							</FirstBlogWrapper>
@@ -137,21 +151,38 @@ const Blog = () => {
 					)}
 					<BlogsWrapper>
 						{
-							Object.entries(mainBlogPosts).map(([, values]) => (
+							testBlogsPost.map(blogs => (
 								<BlogPostLayout 
-									key={values.linkto} 
-									attributes={values} 
-									linkto={values.linkto} 
+									key={blogs.linkto} 
+									attributes={blogs} 
+									linkto={blogs.linkto} 
 									layout="WrappedAround" 
 								/>
 							))
+							// Object.entries(mainBlogPosts).map(([, values]) => (
+							// 	<BlogPostLayout 
+							// 		key={values.linkto} 
+							// 		attributes={values} 
+							// 		linkto={values.linkto} 
+							// 		layout="WrappedAround" 
+							// 	/>
+							// ))
 						}
 					</BlogsWrapper>
-					<p><i>Showing {currentListedBlogs} of {totalListedBlogs}</i></p>
+					<p><i>Showing {testBlogsPost.length} of {BlogDetails1.length}</i></p>
 					{isLoadMoreNeeded && (
-						<LoadMoreButtonContainer>
-							<DynamicButton onClick={handleLoadMore}>LOAD MORE</DynamicButton>
-						</LoadMoreButtonContainer>
+						<>
+							{/* <LoadMoreButtonContainer>
+								<DynamicButton onClick={handleLoadMore}>LOAD MORE</DynamicButton>
+							</LoadMoreButtonContainer> */}
+							<LoadMoreButtonContainer>
+								<DynamicButton 
+									onClick={() => loadBlogs({start: testBlogsPost.length})}
+								>
+									LOAD MORE
+								</DynamicButton>
+							</LoadMoreButtonContainer>
+						</>
 					)}
 				</>
 			)}

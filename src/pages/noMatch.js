@@ -11,10 +11,11 @@ const ImageContainer = styled.div`
 	align-items: center;
 `;
 const Image = styled.img`
-	object-fit: cover;
-	width: 100%;
-	max-height: 100%;
+	object-fit: fill;
 	max-width: 100%;
+	@media (max-width: 630px) {
+		height: 450px;
+	}
 `;
 const Link = styled(CustomLink)`
 	color: #D12500;
