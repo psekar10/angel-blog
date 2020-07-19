@@ -42,6 +42,7 @@ const App = () => {
             <Route path="/pokemon/:slug" component={Pokemon}/>
             <Route path="/about" component={About}/>
             <Route exact path="/blog" component={Blog}/>
+            <Route path="/blog/:slug" component={Blog}/>
             <Route exact path="/blog/style1" component={BlogStyle1}/>
             <Route exact path="/blog/blog1" component={Blog1}/>
             <Route path="/post/:slug" component={BlogPosts}/>
